@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <script src="scripts/config/config.js"></script>
+        <script src="scripts/config/paddleConstant.js"></script>
+        <script src="scripts/config/mediaConstant.js"></script>
+        <script src="scripts/config/canvasConstant.js"></script>
+        <script src="scripts/config/messageConstant.js"></script>
+        <script src="scripts/config/colorConstant.js"></script>
+        <script src="scripts/helper/helper.js"></script>
+        <script src="scripts/view/View.js"></script>
+        <script src="scripts/middleware/threads/CanvasViewThread.js"></script>
+        <script src="scripts/middleware/threads/ScoreBoardViewThread.js"></script>        
+        <script src="scripts/middleware/threads/main.js"></script>
+        <script src="scripts/controller/CanvasController.js"></script>
+        <script src="scripts/controller/ScoreBoardController.js"></script>
+        <script src="scripts/service/media/MediaService.js"></script>        
+        <script src="scripts/service/canvas/CanvasMatchService.js"></script>
+        <script src="scripts/model/canvas/CanvasDrawing.js"></script>
+        <script src="scripts/model/canvas/CanvasAction.js"></script>
+        <script src="scripts/model/media/MediaAudio.js"></script>
+        <script src="scripts/model/media/MediaImage.js"></script>
+        <script src="scripts/model/matches/Team.js"></script>
+        <script src="scripts/model/matches/Paddle.js"></script>
+        <script src="scripts/model/matches/Ball.js"></script>
+        <script src="scripts/model/matches/Field.js"></script>
+        <script src="scripts/model/matches/Timer.js"></script>
+        <script src="scripts/model/canvas/Canvas.js"></script>
+        <script src="scripts/model/matches/BallTouch.js"></script>
+        <link rel="stylesheet" href="styles/canvasFootball.css">
+    </head>
+    <body>
+        <div id="main" class="main">
+            <div class="scoreBoard">
+                <img id="playerOneFlag" class="nationalFlag">
+                <span id="scorePlayer1" class="playerScore">0</span>
+                <canvas id="player1Canvas" class="boardAnimation"></canvas>
+                <p id="timerDescription" class="timer"></p>
+            </div> 
+            <div class="gameCanvas">
+                <canvas id="gameCanvas" width="800" height="600">
+                </canvas>            
+            </div>
+            <div class="scoreBoard">
+                <img id="playerTwoFlag" class="nationalFlag">
+                <span id="scorePlayer2" class="playerScore">0</span>
+                <canvas id="player2Canvas" class="boardAnimation"></canvas>
+                <p id="timer" class="timer"></p>
+            </div>
+        </div>
+    </body>
+    <script>
+        window.onload = function(){
+            Program.Run();
+        };        
+    </script>    
+</html>

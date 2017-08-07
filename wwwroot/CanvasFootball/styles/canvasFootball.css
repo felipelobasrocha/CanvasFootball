@@ -1,0 +1,95 @@
+.gameCanvas{
+    float: left;
+    padding: 10;
+    margin: 10;
+    border-color: green;
+    border-style: solid;
+    width: 800;
+    height: 600;
+    box-sizing: content-box;
+}
+.main{
+    position:absolute;
+    padding: 1;
+    left: 15%;
+    margin: -1% 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+.side,
+.nationalFlag, 
+.scorePlayer, 
+.boardAnimation, 
+.timer{
+    display: none;
+}
+@media only screen and (min-width: 1280px) and (min-height: 600px) {
+    body{
+        width: inherit;
+        height: 110%;
+        padding-bottom: 1%;
+        max-height: 650;
+    }
+    @media only screen and (min-width: 1300px) and (min-height: 610px) {
+        body{
+            overflow: hidden;
+        }
+    }
+    .main{
+        background: linear-gradient(to right, green 0%, white 50%,gray 75%,black 100%);      
+        background-position: center bottom, left top;
+        background-repeat: no-repeat, no-repeat;
+        position: inherit;
+        padding: 1;
+        left: 0;
+        margin: 1;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+    .scoreBoard {
+        float:left;
+        padding: 1%;
+        margin: 1%;
+        width: 12%;
+        height: 100%;
+        box-sizing: content-box;
+        display: block;
+    }
+    .nationalFlag{
+        max-width: 100%;
+        max-height: 100%;
+        min-height: 100;
+        width: 100%;
+        height: initial;
+        display: block;
+    }
+    .playerScore{
+        position: absolute;
+        padding: 1%;
+        margin: 2% 5%;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 50;
+        box-sizing: content-box;
+        width: 25;
+        height: 50;
+        display: block;
+    }
+    .boardAnimation{
+        width: 70%;
+        height: 15%;
+        padding: 1%;
+        margin: 5% 25%;
+        box-sizing: content-box;
+        display: block;
+    }
+    .timer{
+        width: 60;
+        height: 10;
+        padding: 10;
+        margin: 0 60;
+        box-sizing: content-box;
+        display: block;
+    }
+}
