@@ -3,62 +3,56 @@ function ScoreBoardController(view){
         view = new View().getView("scoreBoard");
     }
 
-    var leftScoreBoard = view[0]; // remake
-    var rightScoreBoard = view[1];
-    var mediaService = new MediaService()
+    var mediaService = new MediaService();
+
+    var scoreBoard = [];
+    view.forEach(function(item) {
+        scoreBoard.push(item);
+    });
 
     this.scoreBoard = function(){
         mediaService.loadImages(); 
     };
     this.updateScore = function(score){
-        leftScoreBoard.scorePlayer.innerHTML = score.score1;
-        rightScoreBoard.scorePlayer.innerHTML = score.score2;
+        scoreBoard.forEach(function(item,i) {
+            item.scorePlayer.innerHTML = eval("score.score"+(i+1).toString());
+        });
     };
     this.updateStopWatch = function(timer){
-        leftScoreBoard.timerDescription.innerHTML = timer.stopWatch;
-        rightScoreBoard.timerDescription.innerHTML = timer.description;
+        var leftScoreBoard = scoreBoard[0];
+        var rightScoreBoard = scoreBoard[1];
+
+        if (timer.stopWatch == "-1m-1s"){
+            leftScoreBoard.timerDescription.innerHTML = "Time Up";
+        }else{
+            leftScoreBoard.timerDescription.innerHTML = timer.stopWatch;
+            rightScoreBoard.timerDescription.innerHTML = timer.description;
+        }
     };    
 }
 
-function drawScoreBoard(canvasCtx,cv,color) {  // Score Board Canvas  
-    canvasCtx.clearRect(50, 50, cv.width, cv.height);
-    canvasCtx.setLineDash([15, 10]);
-    canvasCtx.lineDashOffset = -offset;
-    canvasCtx.lineWidth = SCORE_BOARD_THICKNESS;
-    cv.drawStrokeRect(color);
-}
+// Build Animation
+// function drawScoreBoard(canvasCtx,cv,color) {  // Score Board Canvas  
+//     canvasCtx.clearRect(50, 50, cv.width, cv.height);
+//     canvasCtx.setLineDash([15, 10]);
+//     canvasCtx.lineDashOffset = -offset;
+//     canvasCtx.lineWidth = SCORE_BOARD_THICKNESS;
+//     cv.drawStrokeRect(color);
+// }
 
-function drawTimer(timer){
-    // Display the result in the element with id="timer"
-    document.getElementById("timer").innerHTML = time;
-    document.getElementById('timerDescription').innerHTML = textShowGameHalf;
+// function loadScoreBoard() {
+//     offset++;
+//     if (offset > 16) {
+//         offset = 0;
+//     }
 
-    if (timer.timeToFinish < 0) {        
-        gamePeriod--;
-        if (gamePeriod < 0){
-            showingWinScreen = true;
-            document.getElementById("timer").innerHTML = "Time Up";
-            crowdScreamsGoal(GOAL_SOUND_TIME_VICTORY);
-        }else{
-            document.getElementById("timer").innerHTML = "Half Time";
-            refereeWhistles(REFEREE_WHISTLE_SOUND_TIME);
-        }
-    }     
-}
+//     scoreCanvas1 = document.getElementById('player1Canvas');
+//     scoreCanvas1Context = scoreCanvas1.getContext('2d');
 
-function loadScoreBoard() {
-    offset++;
-    if (offset > 16) {
-        offset = 0;
-    }
+//     scoreCanvas2 = document.getElementById('player2Canvas');
+//     scoreCanvas2Context = scoreCanvas2.getContext('2d');
 
-    scoreCanvas1 = document.getElementById('player1Canvas');
-    scoreCanvas1Context = scoreCanvas1.getContext('2d');
-
-    scoreCanvas2 = document.getElementById('player2Canvas');
-    scoreCanvas2Context = scoreCanvas2.getContext('2d');
-
-    drawScoreBoard(scoreCanvas1Context,scoreCanvas1,PLAYER1_COLOR);
-    drawScoreBoard(scoreCanvas2Context,scoreCanvas2,PLAYER2_COLOR);
-    setTimeout(loadScoreBoard, 20);
-}
+//     drawScoreBoard(scoreCanvas1Context,scoreCanvas1,PLAYER1_COLOR);
+//     drawScoreBoard(scoreCanvas2Context,scoreCanvas2,PLAYER2_COLOR);
+//     setTimeout(loadScoreBoard, 20);
+// }
